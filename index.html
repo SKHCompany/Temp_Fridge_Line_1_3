@@ -70,14 +70,14 @@
   <div class="container">
     <h1>GIÁM SÁT NHIỆT ĐỘ<br>TỦ BẢO QUẢN LINE 1 - 3</h1>
 
-    <!-- Hàng 1: Topic esp32/22/temperatureC -->
+    <!-- Hàng 1: Topic esp32/temperatureC -->
     <div class="row">
       <label for="temp1">Line 1:</label>
       <input id="temp1" type="text" value="Đang kết nối..." readonly>
       <span id="status1">⏳ Đang kết nối...</span>
     </div>
 
-    <!-- Hàng 2: Topic esp32/21/temperatureC -->
+    <!-- Hàng 2: Topic esp32/temperatureC2 -->
     <div class="row">
       <label for="temp2">Line 3:</label>
       <input id="temp2" type="text" value="Đang kết nối..." readonly>
@@ -105,11 +105,11 @@
 
       // Subscribe cho từng topic
       client.subscribe("esp32/22/temperatureC", function (err) {
-        if (!err) console.log("✅ Subscribed esp32/22/temperatureC");
+        if (!err) console.log("✅ Subscribed esp32/temperatureC");
       });
 
       client.subscribe("esp32/21/temperatureC", function (err) {
-        if (!err) console.log("✅ Subscribed esp32/21/temperatureC");
+        if (!err) console.log("✅ Subscribed esp32/temperatureC2");
       });
     });
 
@@ -128,14 +128,14 @@
         statusColor = "lightgreen";
       }
 
-      if (topic === "esp32/temperatureC") {
+      if (topic === "esp32/22/temperatureC") {
         document.getElementById("temp1").value = displayText;
         document.getElementById("status1").innerText = statusText;
         document.getElementById("status1").style.color = statusColor;
         lastMessageTime1 = Date.now();
       }
 
-      if (topic === "esp32/temperatureC2") {
+      if (topic === "esp32/21/temperatureC") {
         document.getElementById("temp2").value = displayText;
         document.getElementById("status2").innerText = statusText;
         document.getElementById("status2").style.color = statusColor;
